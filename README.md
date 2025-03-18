@@ -38,8 +38,8 @@ we'll build this around some arduino mega with some connection shield like this
 ![schema principe](https://github.com/glloq/arduino-midi-pipe-organ-console/blob/main/shield%20mega.png)
 
 The goal is to use one arduino MIDI usb compatible (leonardo or micro)  as a "Master" with many other arduino mega as "salve", each slave send the midi message to the master via I2C when there is a change on a input state.  
-The master ask each slave if there is a new midi message, get the last one and send it via usb
-Each slave has to memorise the news midi messages he need to send next, to avoid missing a new input state 
+The master ask each slave if there is a new midi message, if there is a new messages he get the last one and send it via usb
+Each slave has to memorise the news midi messages he need to send next, to avoid missing a new input state (we'll use a fifo buffer) 
 
 
 ### Master code 
