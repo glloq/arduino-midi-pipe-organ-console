@@ -90,3 +90,22 @@ void checkMidiMessages(uint8_t slaveAddress) {
 
 ```
 
+### Slave code 
+
+we will need to have adaptive code to allow associating an input with a type of message to send.  
+In case of keyboard notes we will change the byte to indicate a On or Off note   
+In case of a Program change, we will change the byte to indicate a On or Off 
+
+I made a code in the form of a structure that stores all the information that the Arduino must send when a state changes
+```
+typedef struct {
+  byte midiChannel;     // MIDI Canal  (0-15)
+  int pin;              // Pin 
+  byte messageType;     // MIDI message Type (0 for a Note, 1 for a Program Change)
+  byte param1;          // Parameter 1 (MIDI number or used to send a On PC)
+  byte param2;          // Parameter 2 (only used to send a Off PC)
+} MidiInput;
+
+```
+
+
