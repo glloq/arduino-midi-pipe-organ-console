@@ -12,6 +12,8 @@ The pedals will use a simple rotary potentiometer to send the midi message
 
 
 ## Numbers of inputs 
+
+It's probably easyer to wire each blocs on one arduino (we can use a arduino mega foe each keyboard and one or two for the contacts fixed on the console)
 ![schema principe](https://github.com/glloq/arduino-midi-pipe-organ-console/blob/main/console%20repartition%201.png)
 
 - Keyboard 1 : 54 keys 
@@ -20,7 +22,10 @@ The pedals will use a simple rotary potentiometer to send the midi message
 - Stopknobs : ?
 - Expression : ?
 - Combination Pistons : 39 
-- Registers  : 42 
+- Registers  : 42
+  
+
+  
 
 ## MIDI Chanel to use
 
@@ -95,9 +100,12 @@ void checkMidiMessages(uint8_t slaveAddress) {
 
 we will need to have adaptive code to allow associating an input with a type of message to send.  
 In case of keyboard notes we will change the byte to indicate a On or Off note   
-In case of a Program change, we will change the byte to indicate a On or Off 
+In case of a Program change, we will change the byte to indicate a On or Off  
 
-I made a code in the form of a structure that stores all the information that the Arduino must send when a state changes
+for each input we'll need to remember the channel and the type of the message to send (how to react to a input change)  
+
+I made a code that use a structure to stores all the information that the Arduino must send when a state change
+
 ```
 typedef struct {
   byte midiChannel;     // MIDI Canal  (0-15)
@@ -108,5 +116,9 @@ typedef struct {
 } MidiInput;
 
 ```
+each input state will be stored in a table to know if there is a change in state (to send only once the midi message) and to know witch message to send (with a keys, we'll send a noteOn when closed and noteOff when open) 
+
+
+i'll need to add a messageType for the potentiometer, or another midi message we'll need for the pipe organ.
 
 
