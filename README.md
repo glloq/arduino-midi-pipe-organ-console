@@ -1,6 +1,6 @@
 # arduino-midi-pipe-organ-console
 
-i'm trying to help someone to update a console for a pipe organ  to midi with many arduino  
+i'm trying to help someone to update a console for a pipe organ to midi with many arduino  
 ![schema principe](https://github.com/glloq/arduino-midi-pipe-organ-console/blob/main/console.png)
 
 Each keyboard have one electric common (rail) and 54 inputs normaly open  
@@ -12,6 +12,7 @@ The pedals will use a simple rotary potentiometer to send the midi message
 
 
 ## Numbers of inputs 
+![schema principe](https://github.com/glloq/arduino-midi-pipe-organ-console/blob/main/console%20repartition%201.png)
 
 - Keyboard 1 : 54 keys 
 - Keyboard 2 : 54 keys 
